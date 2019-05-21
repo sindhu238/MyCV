@@ -2,11 +2,20 @@ package com.example.mycv.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.mycv.api.ServerAPIImpl
+import androidx.lifecycle.ViewModelProvider
+import com.example.mycv.api.ServerAPI
 import com.example.mycv.models.CVInfo
 
 
-class MainViewModel : ViewModel() {
+class MyViewModelFactory(private val serverAPI: ServerAPI) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainViewModel(serverAPI) as T
+    }
+}
 
-    fun getCvInfo(gistId: String): LiveData<CVInfo?> = ServerAPIImpl.getCVDetails(gistId)
+class MainViewModel(
+        private val serverAPI: ServerAPI
+) : ViewModel() {
+
+    fun getCvInfo(gistId: String): LiveData<CVInfo?> = serverAPI.getCVDetails(gistId)
 }

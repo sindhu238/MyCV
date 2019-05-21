@@ -29,7 +29,7 @@ class MainViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        viewModel = MainViewModel()
+        viewModel = MainViewModel(serverAPI)
     }
 
     @Test

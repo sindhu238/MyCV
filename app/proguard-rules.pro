@@ -14,8 +14,15 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable,*Annotation*, InnerClasses
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+-dontnote kotlinx.serialization.SerializationKt
+-keep,includedescriptorclasses class com.example.mycv.models.**$$serializer { *; }
+-keepclassmembers class com.example.mycv.models.** {
+    *** Companion;
+}
+-keepclasseswithmembers class com.example.mycv.models.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+-renamesourcefileattribute SourceFile

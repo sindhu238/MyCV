@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycv.R
+import com.example.mycv.api.ServerAPIImpl
 import com.example.mycv.extensions.newLineSeparatedString
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             adapter = ExperienceAdapter(listOf())
         }
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, MyViewModelFactory(ServerAPIImpl)).get(MainViewModel::class.java)
 
         viewModel.getCvInfo(GIST_ID).observe(this, Observer {
             it?.let { cvInfo ->
