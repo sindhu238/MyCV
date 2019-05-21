@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:contentDescription="@string/description"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/logoImage"
+        app:layout_constraintTop_toTopOf="@id/logoImage"
+        app:layout_constraintBottom_toBottomOf="@id/logoImage"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="ETX Capital"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/roleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Mobile Developer" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/responsibilitiesTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="6dp"
+        tools:text="A big description"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

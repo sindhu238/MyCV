@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyCV</string>
+    <string name="description">Image Description</string>
+    <string name="summary">Summary</string>
+    <string name="skills">Skills</string>
+    <string name="experience">Experience</string>
 </resources>
