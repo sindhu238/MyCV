@@ -1,0 +1,47 @@
+{
+  "summary": "A pioneering developer with experience in designing, integrating and deploying applications on Android and iOS platforms with focus on continuous learning to adapt to new technologies for maximizing development efficiency and producing innovative applications.",
+  "skils": [
+    {
+      "languages": [
+        "Kotlin",
+        "Java",
+        "Swift",
+        "RxKotlin"
+      ]
+    },
+    {
+      "reactiveProgramming": [
+        "RxJava",
+        "RxKotlin"
+      ]
+    },
+    {
+      "agile": [
+        "Scrum",
+        "Kanban"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "companyName": "ETX Capital",
+      "role": "Mobile Developer",
+      "date": "Oct 2017 - Present",
+      "responsibilities": [
+        "Create bespoke functionality in both Android (Kotlin) and iOS (Swift), while managing old apps written in Java (Android) and Objective C (iOS) ",
+        "Write clean and testable code using MVP and MVVM frameworks",
+        "Use JUnit, Mockito, and Espresso for writing unit and UI tests "
+      ]
+    },
+    {
+      "companyName": "Trait Solutions",
+      "role": "Mobile Developer",
+      "date": "June 2016 – Oct 2017",
+      "responsibilities": [
+        "Gathering requirements from Business Analysts and Customers",
+        "Design, Build and Debug mobile applications on android and iOS platforms",
+        "Produce professional app designs using tools like Sketch"
+      ]
+    }
+  ]
+}
