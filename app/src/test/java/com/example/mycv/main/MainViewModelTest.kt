@@ -29,7 +29,7 @@ class MainViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        viewModel = MainViewModel(serverAPI)
+        viewModel = MainViewModel()
     }
 
     @Test
@@ -37,6 +37,8 @@ class MainViewModelTest {
         // arrange
         val gistId = "sampleId"
         val cvInfo = CVInfo(
+                name = "Name",
+                address = "sample address",
                 summary = "test summary",
                 skills = listOf("sample1", "sample2"),
                 experience = listOf()

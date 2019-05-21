@@ -14,6 +14,7 @@ data class CVInfo(
 @Serializable
 data class ExperienceInfo(
         val companyName: String,
+        val imageUrl: String,
         val role: String,
         val date: String,
         val responsibilities: List<String>
