@@ -13,9 +13,12 @@ import androidx.test.rule.ActivityTestRule
 import com.example.mycv.activities.main.MainActivity
 import com.example.mycv.fragments.briefCV.BriefCVFragment
 import com.example.mycv.fragments.briefCV.BriefCVModel
-import com.example.mycv.fragments.briefCV.GIST_ID
+import com.example.mycv.fragments.briefCV.Info
 import com.example.mycv.models.CVInfo
+import com.example.mycv.models.ExperienceInfo
+import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -54,15 +57,22 @@ class BriefCVFragmentTest {
             experience = listOf()
     )
 
-    private val nextButtonSubject = PublishSubject.create<Unit>()
+    private val nextButtonSubject = BehaviorSubject.createDefault(Unit)
     private val cvInfoLiveData = MutableLiveData<CVInfo>()
+    private val infoStream = PublishSubject.create<Info>()
+    private val titleObserver = BehaviorSubject.createDefault("")
+    private val nextButtonTitleStream = PublishSubject.create<String>()
 
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        `when`(cvViewModel.nextButtonStream).thenReturn(nextButtonSubject)
-        `when`(cvViewModel.getCvInfo(GIST_ID)).thenReturn(cvInfoLiveData)
+        `when`(cvViewModel.nextButtonObserver).thenReturn(nextButtonSubject)
+        `when`(cvViewModel.cvInfo).thenReturn(cvInfoLiveData)
+        `when`(cvViewModel.infoStream).thenReturn(infoStream)
+        `when`(cvViewModel.titleObserver).thenReturn(titleObserver)
+        `when`(cvViewModel.nextButtonTitleStream).thenReturn(nextButtonTitleStream)
+
 
         activityRule.launchActivity(null)
     }
@@ -79,11 +89,30 @@ class BriefCVFragmentTest {
         recyclerView.check(isGone())
 
         // act
-        nextButtonSubject.onNext(Unit)
-        nextButtonSubject.onNext(Unit)
+        infoStream.onNext(Info("", ExperienceInfo(
+                companyName = "sample",
+                imageUrl = "",
+                role = "Mobile Developer",
+                date = "",
+                responsibilities = listOf()
+        )))
 
         // assert
         recyclerView.check(isVisible())
+    }
+
+    @Test
+    fun testDisplayOfCorrectTitle() {
+        // arrange
+        val titleTV = onView(withId(R.id.titleTV))
+        val detailsTV = onView(withId(R.id.detailsTV))
+
+        // act
+        infoStream.onNext(Info("sample title", "sample description"))
+
+        // assert
+        titleTV.check(matches(withText("sample title")))
+        detailsTV.check(matches(withText("sample description")))
     }
 
     @Test
@@ -96,6 +125,18 @@ class BriefCVFragmentTest {
 
         // assert
         detailsTV.check(matches(withText("sample summary")))
+    }
+
+    @Test
+    fun testDisablingOfNextButton() {
+        // arrange
+        val nextButton = onView(withId(R.id.nextButton))
+
+        //act
+        nextButtonTitleStream.onNext("Done")
+
+        // assert
+        nextButton.check(matches(not(isEnabled())))
     }
 
     private fun isVisible() = getViewAssertion(Visibility.VISIBLE)
