@@ -4,4 +4,6 @@
     <string name="summary">Summary</string>
     <string name="skills">Skills</string>
     <string name="experience">Experience</string>
+    <string name="detail_cv">Detail CV</string>
+    <string name="next">Next</string>
 </resources>

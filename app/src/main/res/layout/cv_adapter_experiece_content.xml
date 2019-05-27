@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="ETX Capital"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -37,6 +38,7 @@
             android:id="@+id/roleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             tools:text="Mobile Developer" />
     </LinearLayout>
 
@@ -48,6 +50,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImage"
         android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
         android:layout_marginStart="6dp"
         tools:text="A big description"/>
 

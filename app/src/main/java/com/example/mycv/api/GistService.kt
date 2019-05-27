@@ -21,7 +21,7 @@ object RetrofitClient {
     }
 }
 
-interface GistApi {
+interface GistService {
     @GET("/sindhu238/{gistId}/raw/53647205cba8d3dc1614bc7819751f5ae3bf2c59/CVData.json")
     fun getCVInfoAsync(@Path("gistId") gistId: String): Deferred<Response<CVInfo>>
 }

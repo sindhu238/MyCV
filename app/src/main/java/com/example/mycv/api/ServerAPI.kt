@@ -15,7 +15,7 @@ object ServerAPIImpl : ServerAPI {
     override fun getCVDetails(gistId: String): LiveData<CVInfo?> =
             MutableLiveData<CVInfo>().let { data ->
                 CoroutineScope(Dispatchers.Default).launch {
-                    RetrofitClient.retrofit.create(GistApi::class.java)
+                    RetrofitClient.retrofit.create(GistService::class.java)
                             .getCVInfoAsync(gistId)
                             .await().let {
                                 it.body()?.let { cvInfo ->

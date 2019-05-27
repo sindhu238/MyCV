@@ -1,4 +1,4 @@
-package com.example.mycv.main
+package com.example.mycv.adapters
 
 import android.view.LayoutInflater
 import android.view.View
